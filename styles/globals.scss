@@ -11,6 +11,116 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 * {
   box-sizing: border-box;
+}
+
+$black: #000000;
+$dark-color: #3c3c3c;
+$light-color: #c9c9c9;
+$primary-color: #de4b4b;
+$white: #ffffff;
+
+.card-wrapper {
+  height: 224.4px;
+  perspective: 1000px;
+  width: 365px;
+
+  &:hover .card {
+    transform: rotateY(180deg);
+  }
+
+  .card {
+    height: 100%;
+    position: relative;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    width: 100%;
+
+    .front,
+    .back {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 10px;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.349);
+      height: 100%;
+      position: absolute;
+      font-family: SF Pro Text;
+      width: 100%;
+    }
+
+    .front {
+      background-image: url("../public/card-front-empty.svg");
+      color: $white;
+      text-shadow: 0px 1px 2px $black;
+
+      .info {
+        margin: 35px auto 0;
+        text-align: left;
+        width: calc(100% - 48px);
+      }
+
+      .flag {
+        height: 23px;
+        margin-bottom: 48px;
+        width: 69px;
+
+        img {
+          opacity: 0;
+          width: 100%;
+        }
+      }
+
+      .numbers {
+        display: flex;
+        font-size: 24px;
+        justify-content: space-between;
+        letter-spacing: -0.12px;
+        line-height: 27px;
+        margin: 0;
+
+        li {
+          display: inline-block;
+        }
+      }
+
+      .name,
+      .expiration {
+        display: inline-block;
+        font-size: 16px;
+        line-height: 23px;
+        margin-top: 30px;
+      }
+      .name {
+        text-align: left;
+        width: 80%;
+      }
+      .expiration {
+        text-align: right;
+        width: 20%;
+      }
+    }
+
+    .back {
+      background-image: url("../public/card-back.svg");
+      transform: rotateY(180deg);
+
+      .cvv {
+        color: $dark-color;
+        height: 25px;
+        line-height: 1.8em;
+        margin-left: 167px;
+        margin-top: 107px;
+        width: 61px;
+      }
+    }
+  }
 }
