@@ -135,6 +135,7 @@ $white: #ffffff;
 
 aside {
   background-color: $primary-color;
+  float: left;
   font-family: Verdana, Geneva, sans-serif;
   height: 100vh;
   max-width: 288px;
@@ -168,7 +169,56 @@ aside {
     letter-spacing: -0.01px;
     line-height: 24px;
     margin: 0 0 30px;
-    opacity: 1;
     padding-left: 65px;
+  }
+}
+
+.form {
+  float: right;
+  max-width: 440px;
+  width: 50%;
+
+  .tracker {
+    color: #de4b4b;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    letter-spacing: -0.01px;
+    margin-top: 50px;
+    text-align: right;
+
+    li {
+      display: inline-block;
+      & + li {
+        margin-left: 24px;
+      }
+
+      span {
+        border-radius: 20px;
+        color: $primary-color;
+        display: inline-block;
+        font-weight: bold;
+        height: 22px;
+        margin-right: 8px;
+        text-align: center;
+        vertical-align: middle;
+        width: 22px;
+
+        &.check {
+          background-color: $primary-color;
+          padding-top: 4px;
+        }
+        &.step {
+          border: 1px solid $primary-color;
+          padding-top: 1.5px;
+        }
+      }
+
+      &.arrow {
+        background: url("/icon-chevron-right-red.svg") no-repeat;
+        height: 20px;
+        vertical-align: middle;
+        width: 16px;
+      }
+    }
   }
 }

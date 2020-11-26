@@ -1,5 +1,6 @@
 import Card from "./card";
 import Link from "next/link";
+import ProgressTracker from "./progressTracker";
 
 export default function Payment() {
   return (
@@ -11,6 +12,9 @@ export default function Payment() {
         <h1>Adicione um novo cartão de crédito</h1>
         <Card />
       </aside>
+      <div className="form">
+        <ProgressTracker />
+      </div>
     </div>
   );
 }
