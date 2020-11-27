@@ -225,6 +225,7 @@ aside {
 }
 
 form {
+  margin-top: 40px;
   text-align: right;
 
   .col-2 {
@@ -244,7 +245,7 @@ form {
   }
 
   .MuiFormControl-root {
-    margin: 20px 0;
+    margin: 8px 0;
   }
   .MuiFormLabel-root {
     -webkit-backface-visibility: hidden;
@@ -305,7 +306,7 @@ button[type="submit"] {
   color: $white;
   font-size: 17px;
   line-height: 22px;
-  margin-top: 42px;
+  margin-top: 22px;
   padding: 16px 71px;
   text-transform: uppercase;
 }

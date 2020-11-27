@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Payment from "../components/payment";
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
         <title>Demo Shop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Demo Shop</h1>
+      <Payment />
     </div>
   );
 }
