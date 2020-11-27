@@ -1,6 +1,7 @@
 import Card from "./card";
 import Link from "next/link";
 import ProgressTracker from "./progressTracker";
+import PaymentForm from "./paymentForm";
 
 export default function Payment() {
   return (
@@ -14,6 +15,7 @@ export default function Payment() {
       </aside>
       <div className="form">
         <ProgressTracker />
+        <PaymentForm />
       </div>
     </div>
   );

@@ -24,6 +24,7 @@ $black: #000000;
 $dark-color: #3c3c3c;
 $light-color: #c9c9c9;
 $primary-color: #de4b4b;
+$error-color: #eb5757;
 $white: #ffffff;
 
 // Card Component Style
@@ -221,4 +222,90 @@ aside {
       }
     }
   }
+}
+
+form {
+  text-align: right;
+
+  .col-2 {
+    display: inline-block;
+    width: calc(50% - 8px);
+
+    & + .col-2 {
+      margin-left: 16px;
+    }
+  }
+
+  .info {
+    label {
+      background: url("/icon-info.svg") right 2px no-repeat;
+      padding-right: 23px;
+    }
+  }
+
+  .MuiFormControl-root {
+    margin: 20px 0;
+  }
+  .MuiFormLabel-root {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    color: $light-color;
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 0;
+
+    &.Mui-focused {
+      color: $light-color;
+    }
+  }
+
+  .MuiSelect-icon {
+    background: url("/icon-chevron-down-red.svg") 6px 5px no-repeat;
+    color: transparent;
+  }
+
+  .MuiSelect-root {
+    text-align: left;
+  }
+
+  .MuiInputBase-root {
+    color: $dark-color;
+  }
+
+  .MuiInput-underline:before {
+    border-color: $light-color;
+  }
+
+  .MuiFormLabel-asterisk {
+    display: none;
+  }
+
+  .MuiInput-underline.Mui-error:after {
+    border-color: $error-color;
+  }
+
+  .MuiFormLabel-root.Mui-error {
+    color: $error-color;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+button[type="submit"] {
+  background-color: $primary-color;
+  border-radius: 10px;
+  border: none;
+  color: $white;
+  font-size: 17px;
+  line-height: 22px;
+  margin-top: 42px;
+  padding: 16px 71px;
+  text-transform: uppercase;
 }
