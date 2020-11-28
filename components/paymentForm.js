@@ -1,12 +1,16 @@
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import {
+  TextField,
+  MenuItem,
+  Select,
+  createMuiTheme,
+  ThemeProvider,
+  FormHelperText,
+  FormControl,
+  InputLabel,
+} from "@material-ui/core";
 
 const theme = createMuiTheme({
-  labelAsterisk: {
-    color: "#000",
-  },
   palette: {
     primary: {
       main: "#3C3C3C",
@@ -37,7 +41,7 @@ export default function Form() {
     },
   ];
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, control } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -93,27 +97,32 @@ export default function Form() {
             helperText={errors.cvv ? errors.cvv.message : " "}
           />
         </div>
-        <TextField
-          inputRef={register({ required: "Insira o número de parcelas" })}
-          id="installment"
-          name="installment"
-          defaultValue=""
-          select
-          label="Número de parcelas"
-          fullWidth
-          error={!!errors.installment}
-          helperText={errors.installment ? errors.installment.message : " "}
-        >
-          {installments.map((option) => (
-            <MenuItem
-              key={option.value}
-              name={option.value}
-              value={option.value}
-            >
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+        <FormControl fullWidth error={Boolean(errors.installment)}>
+          <InputLabel id="intallment">Número de parcelas</InputLabel>
+          <Controller
+            as={
+              <Select>
+                {installments.map((option) => (
+                  <MenuItem
+                    key={option.value}
+                    name={option.value}
+                    value={option.value}
+                  >
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            }
+            name="installment"
+            id="installment"
+            rules={{ required: "Insira o número de parcelas" }}
+            control={control}
+            defaultValue=""
+          />
+          <FormHelperText>
+            {errors.installment ? errors.installment.message : " "}
+          </FormHelperText>
+        </FormControl>
         <button type="submit">Continuar</button>
       </form>
     </ThemeProvider>
