@@ -1,13 +1,25 @@
+import React from "react";
 import ProgressIndicator from "./progressIndicator";
 
-export default function ProgressTracker() {
+export default function ProgressTracker(props) {
+  const [width, setWidth] = React.useState(0);
+  React.useEffect(() => {
+    setWidth(window.innerWidth);
+  });
+
+  const isMobile = width < 938;
+
   return (
     <ul className="tracker">
-      <ProgressIndicator step="check" name="Carrinho" />
-      <ProgressIndicator arrow="true" />
-      <ProgressIndicator step="2" name="Pagamento" />
-      <ProgressIndicator arrow="true" />
-      <ProgressIndicator step="3" name="Confirmação" />
+      {isMobile ? (
+        <li>
+          <b>Etapa {props.position}</b> de {props.steps.length}
+        </li>
+      ) : (
+        props.steps.map((item) => {
+          return <ProgressIndicator step={item[0]} name={item[1]} />;
+        })
+      )}
     </ul>
   );
 }

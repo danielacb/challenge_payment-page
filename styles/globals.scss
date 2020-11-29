@@ -55,7 +55,7 @@ $white: #ffffff;
       box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.349);
       height: 100%;
       position: absolute;
-      font-family: SF Pro Text;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       width: 100%;
     }
 
@@ -76,7 +76,7 @@ $white: #ffffff;
         width: 69px;
 
         img {
-          opacity: 0;
+          // opacity: 0;
           width: 100%;
         }
       }
@@ -85,12 +85,13 @@ $white: #ffffff;
         display: flex;
         font-size: 24px;
         justify-content: space-between;
-        letter-spacing: -0.12px;
+        letter-spacing: 1.4px;
         line-height: 27px;
         margin: 0;
 
         li {
           display: inline-block;
+          font-weight: 300;
         }
       }
 
@@ -99,11 +100,12 @@ $white: #ffffff;
         display: inline-block;
         font-size: 16px;
         line-height: 23px;
-        margin-top: 30px;
+        margin-top: 32px;
       }
       .name {
         text-align: left;
         width: 80%;
+        letter-spacing: 0.5px;
       }
       .expiration {
         text-align: right;
@@ -157,9 +159,8 @@ aside {
     display: inline-block;
     font-size: 13px;
     letter-spacing: -0.01px;
-    margin: 50px 0;
+    margin: 52px 0 53px;
     padding-left: 26px;
-    // text-indent: -9999px;
   }
 
   h1 {
@@ -191,7 +192,12 @@ aside {
     li {
       display: inline-block;
       & + li {
-        margin-left: 24px;
+        margin-left: 21px;
+      }
+      &:not(:first-of-type) {
+        background: url("/icon-chevron-right-red.svg") no-repeat;
+        padding-left: 35px;
+        background-position: 0 0px;
       }
 
       span {
@@ -213,13 +219,6 @@ aside {
           border: 1px solid $primary-color;
           padding-top: 1.5px;
         }
-      }
-
-      &.arrow {
-        background: url("/icon-chevron-right-red.svg") no-repeat;
-        height: 20px;
-        vertical-align: middle;
-        width: 16px;
       }
     }
   }
@@ -246,8 +245,9 @@ form {
   }
 
   .MuiFormControl-root {
-    margin: 8px 0;
+    margin: 9px 0;
   }
+
   .MuiFormLabel-root {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -262,7 +262,7 @@ form {
   }
 
   .MuiSelect-icon {
-    background: url("/icon-chevron-down-red.svg") 6px 5px no-repeat;
+    background: url("/icon-chevron-down-red.svg") 5px 5px no-repeat;
     color: transparent;
   }
 
@@ -291,7 +291,7 @@ form {
   }
 
   .MuiFormLabel-root.Mui-error {
-    color: $error-color;
+    color: $light-color;
   }
 
   input::-webkit-outer-spin-button,
@@ -311,7 +311,110 @@ button[type="submit"] {
   color: $white;
   font-size: 17px;
   line-height: 22px;
-  margin-top: 22px;
-  padding: 16px 71px;
+  margin-top: 30px;
+  padding: 14px 72px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// Responsive
+@media (max-width: 928px) {
+  .container {
+    max-width: 280px;
+    width: 100%;
+  }
+
+  .card-wrapper {
+    max-width: 280px;
+    height: 172px;
+
+    .card {
+      .front {
+        .info {
+          width: calc(100% - 28px);
+          margin-top: 25px;
+
+          .flag {
+            margin-bottom: 32px;
+          }
+          .numbers {
+            font-size: 19px;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+          }
+
+          .name,
+          .expiration {
+            font-size: 12px;
+            line-height: 20px;
+            margin-top: 24px;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
+
+  aside {
+    width: 100%;
+    max-width: 100%;
+    float: none;
+    height: auto;
+    background-color: transparent;
+
+    &::before {
+      height: 239px;
+      z-index: -1;
+      width: 100%;
+    }
+
+    .back-link {
+      text-indent: -9999px;
+      position: absolute;
+      top: -18px;
+      left: calc(50vw - 173px);
+      width: 12px;
+      height: 24px;
+      background-size: contain;
+    }
+
+    h1 {
+      font-size: 16px;
+      line-height: 20px;
+      margin: 86px 0 14px 30px;
+      display: inline-block;
+      height: 40px;
+      background-size: 40px 40px;
+      padding-left: 55px;
+    }
+  }
+
+  .form {
+    width: 100%;
+    float: none;
+
+    .tracker {
+      position: absolute;
+      width: 280px;
+      top: 38px;
+      color: $white;
+      margin-top: 0;
+      text-align: center;
+    }
+  }
+
+  form {
+    margin-top: 18px;
+
+    .MuiFormControl-root {
+      margin: 0;
+    }
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    margin: 24px 0 40px;
+  }
 }

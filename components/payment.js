@@ -2,6 +2,7 @@ import Card from "./card";
 import Link from "next/link";
 import ProgressTracker from "./progressTracker";
 import PaymentForm from "./paymentForm";
+import { checkPropTypes } from "prop-types";
 
 export default function Payment() {
   return (
@@ -14,7 +15,14 @@ export default function Payment() {
         <Card />
       </aside>
       <div className="form">
-        <ProgressTracker />
+        <ProgressTracker
+          steps={[
+            ["check", "Carrinho"],
+            ["2", "Pagamento"],
+            ["3", "Confirmação"],
+          ]}
+          position="2"
+        />
         <PaymentForm />
       </div>
     </div>
