@@ -17,11 +17,10 @@
 </g>
 </g>
 <defs>
-<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(90.3693 148.634) scale(266.784 236.161)">
-<stop stop-color="#5A7589"/>
-<stop offset="0.323" stop-color="#436175"/>
-<stop offset="0.549" stop-color="#315266"/>
-<stop offset="1" stop-color="#124768"/>
+<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(278.25 148.477) rotate(180) scale(266.788 236.169)">
+<stop stop-color="#BFBFBF"/>
+<stop offset="0.337" stop-color="#A8A8A8"/>
+<stop offset="1" stop-color="#727272"/>
 </radialGradient>
 <clipPath id="clip0">
 <rect width="364" height="225" fill="white"/>

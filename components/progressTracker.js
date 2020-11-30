@@ -17,7 +17,9 @@ export default function ProgressTracker(props) {
         </li>
       ) : (
         props.steps.map((item) => {
-          return <ProgressIndicator step={item[0]} name={item[1]} />;
+          return (
+            <ProgressIndicator key={item[1]} step={item[0]} name={item[1]} />
+          );
         })
       )}
     </ul>

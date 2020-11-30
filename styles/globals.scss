@@ -33,7 +33,7 @@ $white: #ffffff;
   perspective: 1000px;
   width: 365px;
 
-  &:hover .card {
+  &.focus .card {
     transform: rotateY(180deg);
   }
 
@@ -53,16 +53,33 @@ $white: #ffffff;
       background-size: cover;
       border-radius: 10px;
       box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.349);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       height: 100%;
       position: absolute;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       width: 100%;
     }
 
     .front {
-      background-image: url("../public/card-front-empty.svg");
+      background: url("../public/card-front-empty.svg"),
+        radial-gradient(
+          73.09% 104.39% at 23.76% 66.08%,
+          #bfbfbf 0%,
+          #a8a8a8 33.7%,
+          #727272 100%
+        );
       color: $white;
       text-shadow: 0px 1px 2px $black;
+
+      &.typed {
+        background: url("../public/card-front.svg"),
+          radial-gradient(
+            73.09% 104.39% at 24.76% 66.15%,
+            #5a7589 0%,
+            #436175 32.3%,
+            #315266 54.9%,
+            #124768 100%
+          );
+      }
 
       .info {
         margin: 35px auto 0;
@@ -76,23 +93,36 @@ $white: #ffffff;
         width: 69px;
 
         img {
-          // opacity: 0;
+          height: 22px;
+        }
+      }
+
+      .numbers,
+      .typing,
+      .typed {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 27px;
+        margin: 0;
+
+        &::after {
+          content: "";
+          display: inline-block;
           width: 100%;
         }
       }
 
-      .numbers {
-        display: flex;
-        font-size: 24px;
-        justify-content: space-between;
-        letter-spacing: 1.4px;
-        line-height: 27px;
-        margin: 0;
+      .numbers,
+      .typed {
+        text-align: justify;
+      }
 
-        li {
-          display: inline-block;
-          font-weight: 300;
-        }
+      .typing span + span {
+        margin-left: 26px;
+      }
+
+      .numbers {
+        letter-spacing: 8.3px;
       }
 
       .name,
@@ -100,12 +130,13 @@ $white: #ffffff;
         display: inline-block;
         font-size: 16px;
         line-height: 23px;
-        margin-top: 32px;
+        margin-top: 4px;
+        text-transform: uppercase;
       }
       .name {
+        letter-spacing: 0.5px;
         text-align: left;
         width: 80%;
-        letter-spacing: 0.5px;
       }
       .expiration {
         text-align: right;
@@ -114,12 +145,33 @@ $white: #ffffff;
     }
 
     .back {
-      background-image: url("../public/card-back.svg");
+      background-image: url("../public/card-back-empty.svg"),
+        radial-gradient(
+          73.09% 104.39% at 23.76% 66.08%,
+          #bfbfbf 0%,
+          #a8a8a8 33.7%,
+          #727272 100%
+        );
       transform: rotateY(180deg);
+
+      &.typed {
+        background-image: url("../public/card-back.svg"),
+          radial-gradient(
+            73.09% 104.39% at 24.76% 66.15%,
+            #5a7589 0%,
+            #436175 32.3%,
+            #315266 54.9%,
+            #124768 100%
+          );
+        .cvv {
+          line-height: 1.6em;
+        }
+      }
 
       .cvv {
         color: $dark-color;
         height: 25px;
+        letter-spacing: 1px;
         line-height: 1.8em;
         margin-left: 167px;
         margin-top: 107px;
@@ -195,9 +247,9 @@ aside {
         margin-left: 21px;
       }
       &:not(:first-of-type) {
+        background-position: 0 0px;
         background: url("/icon-chevron-right-red.svg") no-repeat;
         padding-left: 35px;
-        background-position: 0 0px;
       }
 
       span {
@@ -309,13 +361,13 @@ button[type="submit"] {
   border-radius: 10px;
   border: none;
   color: $white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 17px;
+  letter-spacing: 0.5px;
   line-height: 22px;
   margin-top: 30px;
   padding: 14px 72px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 // Responsive
@@ -326,30 +378,60 @@ button[type="submit"] {
   }
 
   .card-wrapper {
-    max-width: 280px;
     height: 172px;
+    max-width: 280px;
 
     .card {
       .front {
         .info {
-          width: calc(100% - 28px);
           margin-top: 25px;
+          width: calc(100% - 28px);
 
           .flag {
             margin-bottom: 32px;
+
+            img {
+              height: 17px;
+            }
           }
-          .numbers {
+          .numbers,
+          .typing,
+          .typed {
             font-size: 19px;
+            letter-spacing: 6px;
             line-height: 20px;
-            letter-spacing: 0.5px;
+          }
+
+          .typing,
+          .typed {
+            letter-spacing: 3px;
+          }
+
+          .typing span + span {
+            margin-left: 3px;
           }
 
           .name,
           .expiration {
             font-size: 12px;
-            line-height: 20px;
-            margin-top: 24px;
             letter-spacing: 0;
+            line-height: 20px;
+            margin-top: 5px;
+          }
+        }
+      }
+
+      .back {
+        .cvv {
+          height: 20px;
+          line-height: 1.6em;
+          margin-left: 128px;
+          margin-top: 82px;
+          width: 47px;
+
+          &.typed {
+            font-size: 14px;
+            line-height: 1.4em;
           }
         }
       }
@@ -357,50 +439,50 @@ button[type="submit"] {
   }
 
   aside {
-    width: 100%;
-    max-width: 100%;
+    background-color: transparent;
     float: none;
     height: auto;
-    background-color: transparent;
+    max-width: 100%;
+    width: 100%;
 
     &::before {
       height: 239px;
-      z-index: -1;
       width: 100%;
+      z-index: -1;
     }
 
     .back-link {
-      text-indent: -9999px;
-      position: absolute;
-      top: -18px;
-      left: calc(50vw - 173px);
-      width: 12px;
-      height: 24px;
       background-size: contain;
+      height: 24px;
+      left: calc(50vw - 173px);
+      position: absolute;
+      text-indent: -9999px;
+      top: -18px;
+      width: 12px;
     }
 
     h1 {
+      background-size: 40px 40px;
+      display: inline-block;
       font-size: 16px;
+      height: 40px;
       line-height: 20px;
       margin: 86px 0 14px 30px;
-      display: inline-block;
-      height: 40px;
-      background-size: 40px 40px;
       padding-left: 55px;
     }
   }
 
   .form {
-    width: 100%;
     float: none;
+    width: 100%;
 
     .tracker {
-      position: absolute;
-      width: 280px;
-      top: 38px;
       color: $white;
       margin-top: 0;
+      position: absolute;
       text-align: center;
+      top: 38px;
+      width: 280px;
     }
   }
 
@@ -414,7 +496,7 @@ button[type="submit"] {
 
   button[type="submit"] {
     display: block;
-    width: 100%;
     margin: 24px 0 40px;
+    width: 100%;
   }
 }

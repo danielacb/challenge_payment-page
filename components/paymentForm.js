@@ -21,7 +21,7 @@ const theme = createMuiTheme({
   },
 });
 
-export default function Form() {
+export default function Form(props) {
   const installments = [
     {
       value: "one-times",
@@ -59,6 +59,7 @@ export default function Form() {
           error={!!errors.number}
           helperText={errors.number ? errors.number.message : " "}
           fullWidth
+          onChange={props.onNumberChange}
         />
         <TextField
           inputRef={register({ required: "Insira seu nome completo" })}
@@ -69,6 +70,7 @@ export default function Form() {
           fullWidth
           error={!!errors.name}
           helperText={errors.name ? errors.name.message : " "}
+          onChange={props.onNameChange}
         />
         <div className="col-2">
           <TextField
@@ -81,6 +83,7 @@ export default function Form() {
             fullWidth
             error={!!errors.expiry}
             helperText={errors.expiry ? errors.expiry.message : " "}
+            onChange={props.onExpiryChange}
           />
         </div>
         <div className="col-2">
@@ -95,6 +98,9 @@ export default function Form() {
             fullWidth
             error={!!errors.cvv}
             helperText={errors.cvv ? errors.cvv.message : " "}
+            onChange={props.onCodeChange}
+            onFocus={props.onFocusCode}
+            onBlur={props.onFocusCode}
           />
         </div>
         <FormControl fullWidth error={Boolean(errors.installment)}>
