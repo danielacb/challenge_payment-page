@@ -9,17 +9,17 @@ export default function card(props) {
             </div>
             <div
               className={
-                props.number === "****************"
+                props.number === "**** **** **** ****"
                   ? "numbers"
-                  : props.number.length < 16
+                  : props.number.length < 19
                   ? "typing"
                   : "typed"
               }
             >
               <span>{props.number.slice(0, 4)}&nbsp;</span>
-              <span>{props.number.slice(4, 8)}&nbsp;</span>
-              <span>{props.number.slice(8, 12)}&nbsp;</span>
-              <span>{props.number.slice(12, 16)}</span>
+              <span>{props.number.slice(5, 9)}&nbsp;</span>
+              <span>{props.number.slice(10, 14)}&nbsp;</span>
+              <span>{props.number.slice(15, 19)}</span>
             </div>
             <div className="name">{props.name.slice(0, 17)}</div>
             <div className="expiration">

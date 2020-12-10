@@ -6,7 +6,7 @@ import PaymentForm from "./paymentForm";
 import { func } from "prop-types";
 
 export default function Payment(props) {
-  const [cardNumbers, setCardNumbers] = useState("****************");
+  const [cardNumbers, setCardNumbers] = useState("**** **** **** ****");
   const [cardName, setCardName] = useState("Nome do Titular");
   const [expiryDate, setExpiryDate] = useState("0000");
   const [cardCode, setCardCode] = useState("***");
@@ -16,7 +16,7 @@ export default function Payment(props) {
   function handleNumberChange(e) {
     setIssuer(findIssuer(e.target.value));
     if (e.target.value === "") {
-      setCardNumbers("****************");
+      setCardNumbers("**** **** **** ****");
     } else {
       setCardNumbers(e.target.value);
     }

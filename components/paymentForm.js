@@ -1,4 +1,5 @@
 import { useForm, Controller } from "react-hook-form";
+import InputMask from "react-input-mask";
 import {
   TextField,
   MenuItem,
@@ -49,18 +50,23 @@ export default function Form(props) {
   return (
     <ThemeProvider theme={theme}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          inputRef={register({ required: "Número de cartão inválido" })}
-          id="number"
-          name="number"
-          type="number"
-          label="Número do cartão"
-          pattern="[\d| ]{16,22}"
-          error={!!errors.number}
-          helperText={errors.number ? errors.number.message : " "}
-          fullWidth
+        <InputMask
+          maskPlaceholder={null}
+          mask="9999 9999 9999 9999"
           onChange={props.onNumberChange}
-        />
+        >
+          <TextField
+            inputRef={register({ required: "Número de cartão inválido" })}
+            id="number"
+            name="number"
+            type="tel"
+            label="Número do cartão"
+            pattern="[\d| ]{16,22}"
+            error={!!errors.number}
+            helperText={errors.number ? errors.number.message : " "}
+            fullWidth
+          />
+        </InputMask>
         <TextField
           inputRef={register({ required: "Insira seu nome completo" })}
           id="name"
@@ -73,35 +79,48 @@ export default function Form(props) {
           onChange={props.onNameChange}
         />
         <div className="col-2">
-          <TextField
-            inputRef={register({ required: "Data inválida" })}
-            id="expiry"
-            name="expiry"
-            type="number"
-            label="Validade"
-            pattern="dd/dd"
-            fullWidth
-            error={!!errors.expiry}
-            helperText={errors.expiry ? errors.expiry.message : " "}
+          <InputMask
+            maskPlaceholder={null}
+            mask="99/99"
             onChange={props.onExpiryChange}
-          />
+          >
+            <TextField
+              inputRef={register({ required: "Data inválida" })}
+              id="expiry"
+              name="expiry"
+              type="tel"
+              label="Validade"
+              pattern="dd/dd"
+              fullWidth
+              error={!!errors.expiry}
+              helperText={errors.expiry ? errors.expiry.message : " "}
+            />
+          </InputMask>
         </div>
         <div className="col-2">
-          <TextField
-            inputRef={register({ required: "Código inválido" })}
-            id="cvv"
-            name="cvv"
-            type="number"
-            className="info"
-            label="CVV"
-            width="50%"
-            fullWidth
-            error={!!errors.cvv}
-            helperText={errors.cvv ? errors.cvv.message : " "}
+          <InputMask
+            maskPlaceholder={null}
+            mask="999"
             onChange={props.onCodeChange}
             onFocus={props.onFocusCode}
             onBlur={props.onFocusCode}
-          />
+          >
+            <TextField
+              inputRef={register({ required: "Código inválido" })}
+              id="cvv"
+              name="cvv"
+              type="tel"
+              className="info"
+              label="CVV"
+              width="50%"
+              fullWidth
+              error={!!errors.cvv}
+              helperText={errors.cvv ? errors.cvv.message : " "}
+              onChange={props.onCodeChange}
+              onFocus={props.onFocusCode}
+              onBlur={props.onFocusCode}
+            />
+          </InputMask>
         </div>
         <FormControl fullWidth error={Boolean(errors.installment)}>
           <InputLabel id="intallment">Número de parcelas</InputLabel>
